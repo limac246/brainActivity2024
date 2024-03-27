@@ -1,3 +1,3 @@
 Updates from data preprocessing:
-1. 
+1. 80% percent of the cases (rows in train.csv) with seizure as expert_consensus have only 3 experts, whereas other conditions have higher percentage of cases with >3 experts.
 2. 
