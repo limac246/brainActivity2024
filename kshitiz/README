@@ -1,3 +1,20 @@
 Updates from data preprocessing:
-1. 80% percent of the cases (rows in train.csv) with seizure as expert_consensus have only 3 experts, whereas other conditions have higher percentage of cases with >3 experts.
-2. 
+1. 80% percent of the cases (rows in train.csv) with seizure as expert_consensus have only 3 experts, whereas other conditions 
+have higher percentage of cases with >3 experts. (See the figure in last cell of EDA_train.ipynb
+
+2. There are "Nan" values in some of the EEG and spectrogram parquet files. I have added four columns to train.csv corresponding to:
+- "eeg_50sec_nan_row_count": number of rows in the 50sec time window (i.e. out of 10000 rows) with Nan
+- "eeg_10sec_nan_row_count": number of rows in the middle 10 sec of the 50sec time window (i.e. out of 2000 middle rows) with Nan
+- "spectrogram_600sec_nan_row_count": number of rows in the 600sec time window (i.e. out of 300 rows) with Nan
+- "spectrogram_10sec_nan_row_count": number of rows in the middle 10 sec of the 600sec time window (i.e. out of 6 middle rows) with Nan
+
+Out of 106800, there are 
+- 3542 cases of >=1 rows with Nan in the 50sec EEG time windows 
+- 727 cases of >=1 rows with Nan in the middle 10sec of 50sec EEG time windows 
+- 7743 cases of >=1 rows with Nan in the 600sec Spectrogram time windows 
+- 165 cases of >=1 rows with Nan in the middle 10sec of 600sec Spectrogram time windows 
+
+We will have to decide how to deal with the missing value cases. Possible option:
+Discard the cases with Nan in middle 10 sec time window in either EEG or Spectrogram, and 
+In the remain cases with Nan in reminder of 50sec or 600sec EEG/spectrogram time windows, use an imputation method if we decide to 
+use the whole of 50sec and 600sec EEG/spectrograms.
