@@ -12,10 +12,10 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 
 To detect and classify seizures and other types of harmful brain activity using a model trained on EEG signals recorded from critically ill hospital patients.
 
-##Stakeholders
+## Stakeholders
 
 <ins>Hospitals, labs, and brain researchers</ins>: Automating EEG analysis that can alleviate the labor-intensive, time consuming, and fatigue-related error prone manual analysis by specialized personnel, enabling detection of seizures and other types of brain activity that can cause brain damage ensuring quick and accurate treatment.
 
-##Key Performance Indicators
+## Key Performance Indicators
 
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target. 
