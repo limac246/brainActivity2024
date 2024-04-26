@@ -133,6 +133,8 @@ Accuracy: 0.53 <br>
 Weighted Precision: 0.58 <br>
 Weighted Recall: 0.57 <br>
 
+![confusion_matrix](https://github.com/limac246/brainActivity2024/assets/1163726/4c1df904-c618-4433-ad82-786186b0e039)
+
 This model, along with its performance on the test set, is saved in scripts/models/best_model_and_performance. 
 
 ## Strengths and weaknesses of our model, and future research
