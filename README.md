@@ -101,7 +101,7 @@ But first, a natural baseline model is to assign to each class simply the propor
 
 For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., on the features extracted from the Kaggle spectrograms and the features extracted from the Mel spectrograms, respectively).
 
-Furthermore, as an attempt to denoise our data (since our combined training data set has 4920 features), we ran one iteration of CatBoost (with default parameters) on the train dataset, and selected the top 90% of the features from the resulting feature importance list. This subset, which we will call SF (for selected features), consists of around 2000 features. 
+Furthermore, as an attempt to denoise our data (since our combined training data set has 4920 features), we performed a feature selection step using CatBoost (with defualt parameters). A 5-fold cross validation on the train set is used to compute the average feature importance scores, whereby feature importance across each fold was obtained on the validation set and then averaged. Top features up to 90% of cumulative feature importance were then selected. This subset, which we will call SF (for selected features), consists of a truncated set of 1998 features. 
 
 
 #### Average KL divergence across 5-fold CV
