@@ -16,8 +16,15 @@ Project on detecting harmful brain activity based on Kaggle project (Erdos Insti
 
 ## Background
 
+### About EEG
+Electroencephalography (EEG) is a method to record the spontaneous electrical activity of the brain. 19 electrodes are placed on the scalp to detect electrical signals from four regions of the brain (LL = left lateral; RL = right lateral; LP = left parasagittal; RP = right parasagittal).
+
 ### Goal
 The goal of this project is to detect and classify seizures and other types of harmful brain activity using a model trained on EEG signals recorded from critically ill hospital patients. More specifically, given 50 seconds of EEG signal, our model will output a probability distribution for the six classes [‘Seizure’, ‘LPD’, ‘GPD’, ‘LRDA’, ‘GRDA’, ‘Other’ ].
+
+### Stakeholders
+
+<ins>Hospitals, labs, and brain researchers</ins>: Automating EEG analysis that can alleviate the labor-intensive, time consuming, and fatigue-related error prone manual analysis by specialized personnel, enabling detection of seizures and other types of brain activity that can cause brain damage ensuring quick and accurate treatment.
 
 ## Data 
 
