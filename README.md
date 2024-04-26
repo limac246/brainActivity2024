@@ -55,7 +55,7 @@ In **scripts/data_preprocessing/feature_extr_kaggle_spec.ipynb**:
 
 4) From the Kaggle provided spectrograms, we extract features such as total power and powers for various frequency ranges (bands) for each of the four regions of the brain mentioned above, as well as statistics such as mean, min, and max for each column of the provided spectrogram over a 10 minute window, and a 20 second window. The idea here is to capture information about the long term behavior of the EEG signal that is missing from looking at just the 50 second EEG data. This yields 2424 new features per row of the original dataset. 
 
-In **scripts/data_preprocessing/make_spec.ipynb**:
+In **scripts/data_preprocessing/make_mel_spec_from_EEG.ipynb**:
 
 5) From the 50 second window of the Kaggle provided EEG data, after applying preprocessing steps 1 and 2, we create our own Mel spectrograms using the librosa python library. These spectrograms give us much more granular spectral information about the short term EEG signals, compared to the lower resolution, longer term spectrogram data from step 4 above. This yields 2048 new features per row of the original dataset. 
 
@@ -81,13 +81,11 @@ Since our models predict probability distributions, a natural choice for our KPI
 
 Since we are ultimately solving a classification problem, we considered the following natural classification models: Naive Bayes, Logistic regression, Random forest, XGBoost classifier, and CatBoost classifier. 
 
-1) **Baseline:** Our baseline model outputs the constant distribution [p0, p1, p2, p3, p4, p5], where 
-p0 = percentage of Seizure votes in the training set,
-p1 = percentage of LPD votes in the training set,
-p2 = percentage of GPD votes in the training set,
-p3 = percentage of LRDA votes in the training set,
-p4 = percentage of GRDA votes in the training set, and 
-p5 = percentage of Other votes in the training set.
+But first, a natural baseline model is to assign to each class simply the proportion of the data points in the training set with that class as the expert consensus. Namely, the baseline assigns to each data point the constant distribution [p0, p1, p2, p3, p4, p5] where p0 = percentage of Seizure votes in the training set, etc.
+
+For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., the Kaggle spectrogram extracted features and the Mel spectrogram extracted features).   
+
+1) **Baseline:** 
 
 The KL-divergence is ... 
 
