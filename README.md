@@ -61,11 +61,11 @@ In **scripts/data_preprocessing/eeg_preprocessing.py**:
    RL: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2 <br>
    for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote the four different regions of the brain mentioned in the Background section.
 
-3) We then filter these relative signals to remove frequencies below 0.5 Hz and above 40 Hz. We save the middle 10 seconds of data for future use.
+3) We then process these relative signals to remove frequencies below 0.5 Hz and above 40 Hz, and also apply a notch filter at 60 Hz. These signal preprocessing steps are based in framework generally applied in EEG studies [2]. We save the middle 10 seconds of data for future use.
 
 In **scripts/data_preprocessing/extract_time_frequency_univariate_features.py**:
 
-3) Using the python library "eeglib", we extract various features from the (middle 10 seconds of the filtered) relative signals. Some such features are: relative band powers, spectral edge frequncy, and the Hjorth parameters. We also calculate standard statistics for the relative signals (mean, standard deviation, skewness, and kurtosis). This yields 448 new features per row of the original dataset. 
+3) Using the python library "eeglib", we extract various features from the (middle 10 seconds of the filtered) relative signals that have been previously used in literature for EEG classification tasks [1]. Some such features are: relative band powers, spectral edge frequncy, and the Hjorth parameters. We also calculate standard statistics for the relative signals (mean, standard deviation, skewness, and kurtosis). This yields 448 new features per row of the original dataset.  
 
 In **scripts/data_preprocessing/feature_extr_kaggle_spec.ipynb**:
 
@@ -141,6 +141,7 @@ This model, along with its performance on the test set, is saved in scripts/mode
 
 As apparent from the confusion matrix, our best model performs reasonably well for classifying Seizures, LPD, GPD, and GRDA, but performs poorly at detecting LRDA. For future research, we hope to improve our model's performance in detecting LRDA, as well as improving the precision and recall for the other classes by extracting more sophisticated features following state-of-the-art EEG literatures. We also hope to run various deep learning models, such as CNNs, on such features. 
 
-
-
+## References
+[1] Leal, Adriana, et al. "Unsupervised EEG preictal interval identification in patients with drug-resistant epilepsy." Scientific Reports 13.1 (2023): 784.
+[2] Jing, Jin, et al. "Development of expert-level classification of seizures and rhythmic and periodic patterns during eeg interpretation." Neurology 100.17 (2023): e1750-e1762.
 
