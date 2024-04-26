@@ -73,7 +73,7 @@ In **scripts/data_preprocessing/feature_extr_kaggle_spec.ipynb**:
 
 In **scripts/data_preprocessing/make_mel_spec_from_EEG.ipynb**:
 
-5) From the 50 second window of the Kaggle provided EEG data, after applying preprocessing steps 1 and 2, we create our own Mel spectrograms using the librosa python library. These spectrograms give us much more granular spectral information about the short term EEG signals, compared to the lower resolution, longer term spectrogram data from step 4 above. This yields 2048 new features per row of the original dataset. 
+5) From the 50 second window of the Kaggle provided EEG data, after applying preprocessing steps 1 and 2, we create our own Mel spectrograms using the librosa python library. Then we extracted statistics such as mean, min, max, and standard deviation for the middle 10 seconds of each frequency in the Mel spectrogram for each of the four regions of the brain. These spectrograms give us much more granular spectral information about the short term EEG signals, compared to the lower resolution, longer term spectrogram data from step 4 above. This yields 2048 new features per row of the original dataset. 
 
 In **scripts/data_preprocessing/merge_spectrogram_features_n_train_test_split.ipynb**:
 
