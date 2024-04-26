@@ -12,12 +12,28 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target.-->
 
 # brainActivity2024 - Executive Summary
-Project on detecting harmful brain activity based on Kaggle project (Erdos Institute, Spring 2024)
+Project on detecting and classifying seizure-like brain activity based on the [HMS - Harmful Brain Activity Classification](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification) Kaggle project. (Erdos Institute, Spring 2024)
 
 ## Background
 
+### About EEG
+Electroencephalography (EEG) is a method to record the spontaneous electrical activity of the brain. 19 electrodes are placed on the scalp to detect electrical signals from four regions of the brain: LL (left lateral), RL (right lateral), LP (left parasagittal), and RP (right parasagittal).
+
 ### Goal
-The goal of this project is to detect and classify seizures and other types of harmful brain activity using a model trained on EEG signals recorded from critically ill hospital patients. More specifically, given 50 seconds of EEG signal, our model will output a probability distribution for the six classes [‘Seizure’, ‘LPD’, ‘GPD’, ‘LRDA’, ‘GRDA’, ‘Other’ ].
+The goal of this project is to detect and classify the following types of harmful brain activities: <br>
+Seizure <br>
+Generalized Periodic Discharges (GPD) <br>
+Lateralized Periodic Discharges (LPD) <br> 
+Lateralized Rhythmic Delta Activity (LRDA) <br> 
+Generalized Rhythmic Delta Activity (GRDA) <br>
+“Other” <br>
+
+We will do this by training models on EEG signals recorded from hospital patients exhibiting such brain activities. More specifically, given 50 seconds of EEG signal, our model will output a probability distribution for the six classes [‘Seizure’, ‘LPD’, ‘GPD’, ‘LRDA’, ‘GRDA’, ‘Other’].
+
+
+### Stakeholders
+
+**Hospitals, labs, and brain researchers:** Automating EEG analysis that can alleviate the labor-intensive, time consuming, and fatigue-related error prone manual analysis by specialized personnel, enabling detection of seizures and other types of brain activity that can cause brain damage ensuring quick and accurate treatment.
 
 ## Data 
 
@@ -28,7 +44,7 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 1) train.csv from Kaggle competition, which has 106800 data points (i.e. rows of data). 
 
 2) EEG data associated with each 'eeg_id' in train.csv (typically 50 secs of EEG data, but longer on occasion).
-The EEG data provided from Kaggle consist of columns with readings from the following 20 sensors: ['Fp1', 'F3', 'C3', 'P3', 'F7', 'T3', 'T5', 'O1', 'Fz', 'Cz', 'Pz', 'Fp2', 'F4', 'C4', 'P4', 'F8', 'T4', 'T6', 'O2', 'EKG']. 
+The EEG data provided from Kaggle consist of columns with readings from the 19 electrodes mentioned above (plus EKG): ['Fp1', 'F3', 'C3', 'P3', 'F7', 'T3', 'T5', 'O1', 'Fz', 'Cz', 'Pz', 'Fp2', 'F4', 'C4', 'P4', 'F8', 'T4', 'T6', 'O2', 'EKG']. 
 
 The data consists of readings over 50 seconds (and sometimes longer), sampled at a rate of 200 samples per second. For EEG data longer than 50 seconds, an EEG offset is provided in the train dataset (as the column 'eeg_label_offset_seconds'). An offset of k seconds indicates that the EEG window from seconds k to k+50 is used for the final predictions (we note that the final classification into the seizure-like activity is made from the middle 10 seconds of the 50 seconds window of EEG data). 
 
@@ -38,14 +54,14 @@ The data consists of readings over 50 seconds (and sometimes longer), sampled at
 
 In **scripts/data_preprocessing/eeg_preprocessing.py**:
 
-1) From the Kaggle provided EEG data, we obtain the "relative signals"
-   LL: Fp1 - F7, F7 - T3, T3 - T5, T5 - O1
-   LP: Fp1 - F3, F3 - C3, C3 - P3, P3 - O1
-   RP: Fp2 - F4, F4 - C4, C4 - P4, P4 - O2
-   RR: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2
-   for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote four different regions of the brain where the signals are extracted from, called the left temporal chain, left parasagittal chain, right parasagittal chain, and right temporal chain, respectively.
+1) From the Kaggle provided EEG data, we obtain the "relative signals" <br>
+   LL: Fp1 - F7, F7 - T3, T3 - T5, T5 - O1 <br>
+   LP: Fp1 - F3, F3 - C3, C3 - P3, P3 - O1 <br>
+   RP: Fp2 - F4, F4 - C4, C4 - P4, P4 - O2 <br>
+   RL: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2 <br>
+   for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote the four different regions of the brain mentioned in the Background section.
 
-2) We then filter these relative signals to remove frequencies below 0.5 Hz and above 40 Hz. We save the middle 10 seconds of data for future use.
+3) We then filter these relative signals to remove frequencies below 0.5 Hz and above 40 Hz. We save the middle 10 seconds of data for future use.
 
 In **scripts/data_preprocessing/extract_time_frequency_univariate_features.py**:
 
@@ -106,11 +122,25 @@ We reran the 5 models mentioned above on the subset SF of the features, and they
 
 #### Test set performance
 
-Our best performing model is the XGBoost classifier. 
+Our best performing model is the XGBoost classifier with optimal parameters (found using the hyperopt python library): <br>
 
-## Interpretation of results 
+{'colsample_bytree': 0.6376657493489575, 'gamma': 0.17012927852299328, 'learning_rate': 0.13440876516049854, 'max_depth': 3, 'n_estimators': 470, 'reg_lambda': 2.1752761618923397, 'subsample': 0.7988428380922181} <br>
+
+On the test set, this model yields: <br>
+
+KL divergence: 0.71 <br>
+Accuracy: 0.53 <br>
+Weighted Precision: 0.58 <br>
+Weighted Recall: 0.57 <br>
+
+![confusion_matrix](https://github.com/limac246/brainActivity2024/assets/1163726/4c1df904-c618-4433-ad82-786186b0e039)
+
+This model, along with its performance on the test set, is saved in scripts/models/best_model_and_performance. 
 
 ## Strengths and weaknesses of our model, and future research
+
+As apparent from the confusion matrix, our best model performs reasonably well for classifying Seizures, LPD, GPD, and GRDA, but performs poorly at detecting LRDA. For furture research, we hope to improve our model's performance in detecting LRDA, as well as improving the precision and recall for the other classes by extracting more sophisticated features following state-of-the-art EEG literatures. We also hope to run various deep learning models, such as CNNs, on such features. 
+
 
 
 
