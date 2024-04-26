@@ -83,25 +83,30 @@ Since we are ultimately solving a classification problem, we considered the foll
 
 But first, a natural baseline model is to assign to each class simply the proportion of the data points in the training set with that class as the expert consensus. Namely, the baseline assigns to each data point the constant distribution [p0, p1, p2, p3, p4, p5] where p0 = percentage of Seizure votes in the training set, etc.
 
-For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., on the features extracted from the Kaggle spectrograms and the features extracted from the Mel spectrograms, respectively).   
+For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., on the features extracted from the Kaggle spectrograms and the features extracted from the Mel spectrograms, respectively).
 
-1) **Baseline:** 
+Furthermore, as an attempt to denoise our data (since our combined training data set has 4920 features), we ran one iteration of CatBoost (with default parameters) on the train dataset, and selected the top 90% of the features from the resulting feature importance list. This subset, which we will call SF (for selected features), consists of around 2000 features. 
 
-The KL-divergence is ... 
 
-We refer to the features extracted from data preprocessing step 3 as F3, from step 4 as F4, and step 5 as F5. 
+#### Average KL divergence across 5-fold CV
 
-For the remaining models, we first ran one iteration of CatBoost (with default parameters) on the train dataset (which has 4920 features), and selected the top 90% of the features from the resulting feature importance list. This subset, which we will call SF (selected features) consists of around 2000 features. 
+We reran the 5 models mentioned above on the subset SF of the features, and they yielded better average KL divergence across 5-fold cross validation. We record the KL divergence of each of these models trained on SF (except for Baseline) - after some hyperparameter tuning. 
 
-2)   **Naive Bayes:**
+1) **Baseline:** 1.36
 
-3)   **Logistic Regression (multiclass):** 
+2)   **Naive Bayes:** 16.72
 
-4)   **Random Forest:**
+3)   **Logistic Regression (multiclass):** 1.17
 
-5)   **XGBoost:**
+4)   **Random Forest:** 0.81
 
-6)   **Catboost:**
+5)   **XGBoost:** 0.78
+
+6)   **Catboost:** 0.79
+
+#### Test set performance
+
+Our best performing model is the XGBoost classifier. 
 
 ## Interpretation of results 
 
