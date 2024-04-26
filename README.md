@@ -122,7 +122,18 @@ We reran the 5 models mentioned above on the subset SF of the features, and they
 
 #### Test set performance
 
-Our best performing model is the XGBoost classifier. 
+Our best performing model is the XGBoost classifier with optimal parameters: <br>
+
+{'colsample_bytree': 0.6376657493489575, 'gamma': 0.17012927852299328, 'learning_rate': 0.13440876516049854, 'max_depth': 3, 'n_estimators': 470, 'reg_lambda': 2.1752761618923397, 'subsample': 0.7988428380922181} <br>
+
+found using the hyperopt python library. On the test set, this model yields: <br>
+
+KL divergence: 0.71 <br>
+Accuracy: 0.53 <br>
+Weighted Precision: 0.58 <br>
+Weighted Recall: 0.57 <br>
+
+This model, along with its performance on the test set, is saved in scripts/models/best_model_and_performance. 
 
 ## Interpretation of results 
 
