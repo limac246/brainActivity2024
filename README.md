@@ -135,9 +135,8 @@ Weighted Recall: 0.57 <br>
 
 This model, along with its performance on the test set, is saved in scripts/models/best_model_and_performance. 
 
-## Interpretation of results 
-
 ## Strengths and weaknesses of our model, and future research
+
 
 
 
