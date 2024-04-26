@@ -11,12 +11,12 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target.-->
 
-# brainActivity2024 - Executive Summary
+# Harmful Brain Activity Classification - Executive Summary
 Project on detecting and classifying seizure-like brain activity based on the [HMS - Harmful Brain Activity Classification](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification) Kaggle project. (Erdos Institute, Spring 2024)
 
 Group: Evgeniya Lagoda, Kshitiz Parihar, Souparna Purohit, and Jianing Yang.
 
-## Acknowledgement
+### Acknowledgement
 We would like to thank our mentor Rongqing Ye for his many helpful suggestions, and always keeping us on track. We would also like to thank The Erdös Institute Data Science Boot Camp, and in particular, Roman Holowinsky, Steven Gubkin, and Alec Clott for giving us this opportunity.  
 
 ## Background
