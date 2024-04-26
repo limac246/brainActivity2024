@@ -44,7 +44,7 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 1) train.csv from Kaggle competition, which has 106800 data points (i.e. rows of data). 
 
 2) EEG data associated with each 'eeg_id' in train.csv (typically 50 secs of EEG data, but longer on occasion).
-The EEG data provided from Kaggle consist of columns with readings from the following 20 sensors: ['Fp1', 'F3', 'C3', 'P3', 'F7', 'T3', 'T5', 'O1', 'Fz', 'Cz', 'Pz', 'Fp2', 'F4', 'C4', 'P4', 'F8', 'T4', 'T6', 'O2', 'EKG']. 
+The EEG data provided from Kaggle consist of columns with readings from the 19 electrodes mentioned above (plus EKG): ['Fp1', 'F3', 'C3', 'P3', 'F7', 'T3', 'T5', 'O1', 'Fz', 'Cz', 'Pz', 'Fp2', 'F4', 'C4', 'P4', 'F8', 'T4', 'T6', 'O2', 'EKG']. 
 
 The data consists of readings over 50 seconds (and sometimes longer), sampled at a rate of 200 samples per second. For EEG data longer than 50 seconds, an EEG offset is provided in the train dataset (as the column 'eeg_label_offset_seconds'). An offset of k seconds indicates that the EEG window from seconds k to k+50 is used for the final predictions (we note that the final classification into the seizure-like activity is made from the middle 10 seconds of the 50 seconds window of EEG data). 
 
