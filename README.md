@@ -30,6 +30,8 @@ Generalized Rhythmic Delta Activity (GRDA) <br>
 
 We will do this by training models on EEG signals recorded from hospital patients exhibiting such brain activities. More specifically, given 50 seconds of EEG signal, our model will output a probability distribution for the six classes [‘Seizure’, ‘LPD’, ‘GPD’, ‘LRDA’, ‘GRDA’, ‘Other’].
 
+Shown below are examples of EEG data (on the right), along with its corresponding spectrogram data (on the left), for each of the 5 classes of interest. 
+<img width="475" alt="pic1" src="https://github.com/limac246/brainActivity2024/assets/1163726/66669935-94e4-43af-a6e0-356a8ce80cbe">
 
 ### Stakeholders
 
