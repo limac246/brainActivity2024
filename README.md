@@ -83,7 +83,7 @@ Since we are ultimately solving a classification problem, we considered the foll
 
 But first, a natural baseline model is to assign to each class simply the proportion of the data points in the training set with that class as the expert consensus. Namely, the baseline assigns to each data point the constant distribution [p0, p1, p2, p3, p4, p5] where p0 = percentage of Seizure votes in the training set, etc.
 
-For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., the Kaggle spectrogram extracted features and the Mel spectrogram extracted features).   
+For each of the other models, we trained them on the combinations of the features extracted from data preprocessing steps 3 and 4, and 4 and 5. Out of these, the models generally performed better on the features extracted from steps 4 and 5 (i.e., on the features extracted from the Kaggle spectrograms and the features extracted from the Mel spectrograms, respectively).   
 
 1) **Baseline:** 
 
