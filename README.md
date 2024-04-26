@@ -12,12 +12,12 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target.-->
 
 # brainActivity2024 - Executive Summary
-Project on detecting and classifying seizure-like brain activity based on the [Harmful Brain Activity Classification](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification) Kaggle project. (Erdos Institute, Spring 2024)
+Project on detecting and classifying seizure-like brain activity based on the [HMS - Harmful Brain Activity Classification](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification) Kaggle project. (Erdos Institute, Spring 2024)
 
 ## Background
 
 ### About EEG
-Electroencephalography (EEG) is a method to record the spontaneous electrical activity of the brain. 19 electrodes are placed on the scalp to detect electrical signals from four regions of the brain (LL = left lateral; RL = right lateral; LP = left parasagittal; RP = right parasagittal).
+Electroencephalography (EEG) is a method to record the spontaneous electrical activity of the brain. 19 electrodes are placed on the scalp to detect electrical signals from four regions of the brain: LL (left lateral), RL (right lateral), LP (left parasagittal), and RP (right parasagittal).
 
 ### Goal
 The goal of this project is to detect and classify the following types of harmful brain activities: <br>
@@ -54,14 +54,14 @@ The data consists of readings over 50 seconds (and sometimes longer), sampled at
 
 In **scripts/data_preprocessing/eeg_preprocessing.py**:
 
-1) From the Kaggle provided EEG data, we obtain the "relative signals"
-   LL: Fp1 - F7, F7 - T3, T3 - T5, T5 - O1
-   LP: Fp1 - F3, F3 - C3, C3 - P3, P3 - O1
-   RP: Fp2 - F4, F4 - C4, C4 - P4, P4 - O2
-   RR: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2
-   for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote four different regions of the brain where the signals are extracted from, called the left temporal chain, left parasagittal chain, right parasagittal chain, and right temporal chain, respectively.
+1) From the Kaggle provided EEG data, we obtain the "relative signals" <br>
+   LL: Fp1 - F7, F7 - T3, T3 - T5, T5 - O1 <br>
+   LP: Fp1 - F3, F3 - C3, C3 - P3, P3 - O1 <br>
+   RP: Fp2 - F4, F4 - C4, C4 - P4, P4 - O2 <br>
+   RL: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2 <br>
+   for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote the four different regions of the brain mentioned in the Background section.
 
-2) We then filter these relative signals to remove frequencies below 0.5 Hz and above 40 Hz. We save the middle 10 seconds of data for future use.
+3) We then filter these relative signals to remove frequencies below 0.5 Hz and above 40 Hz. We save the middle 10 seconds of data for future use.
 
 In **scripts/data_preprocessing/extract_time_frequency_univariate_features.py**:
 
