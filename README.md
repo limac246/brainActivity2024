@@ -12,7 +12,7 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target.-->
 
 # brainActivity2024 - Executive Summary
-Project on detecting harmful brain activity based on Kaggle project (Erdos Institute, Spring 2024)
+Project on detecting harmful brain activity based on the Harmful Brain Activity Classification Kaggle project (https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification). (Erdos Institute, Spring 2024)
 
 ## Background
 
@@ -20,7 +20,7 @@ Project on detecting harmful brain activity based on Kaggle project (Erdos Insti
 Electroencephalography (EEG) is a method to record the spontaneous electrical activity of the brain. 19 electrodes are placed on the scalp to detect electrical signals from four regions of the brain (LL = left lateral; RL = right lateral; LP = left parasagittal; RP = right parasagittal).
 
 ### Goal
-The goal of this project is to detect and classify the following types of harmful brain activities:
+The goal of this project is to detect and classify the following types of harmful brain activities: <br>
 Seizure <br>
 Generalized Periodic Discharges (GPD) <br>
 Lateralized Periodic Discharges (LPD) <br> 
