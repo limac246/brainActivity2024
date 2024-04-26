@@ -12,7 +12,7 @@ The dataset for the project is publicly available at Kaggle Competition [HMS –
 Evaluated on the Kullback–Leibler (KL) divergence between the predicted probability and the observed target.-->
 
 # brainActivity2024 - Executive Summary
-Project on detecting harmful brain activity based on the Harmful Brain Activity Classification Kaggle project (https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification). (Erdos Institute, Spring 2024)
+Project on detecting and classifying seizure-like brain activity based on the [Harmful Brain Activity Classification Kaggle project] (https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification). (Erdos Institute, Spring 2024)
 
 ## Background
 
