@@ -61,7 +61,7 @@ In **scripts/data_preprocessing/eeg_preprocessing.py**:
    RL: Fp2 - F8, F8 - T4, T4 - T6, T6 - O2 <br>
    for each 50 seconds of EEG data by taking the appropriate differences between the original EEG signals. The LL, LP, RP, RR denote the four different regions of the brain mentioned in the Background section.
 
-3) We then process these relative signals to remove frequencies below 0.5 Hz and above 40 Hz, and also apply a notch filter at 60 Hz. These signal preprocessing steps are based in framework generally applied in EEG studies [2]. We save the middle 10 seconds of data for future use.
+3) We then process these relative signals to remove frequencies below 0.5 Hz and above 40 Hz, and also apply a notch filter at 60 Hz. These signal preprocessing steps are based on framework generally applied in EEG studies [2]. We save the middle 10 seconds of data for future use.
 
 In **scripts/data_preprocessing/extract_time_frequency_univariate_features.py**:
 
