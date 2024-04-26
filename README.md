@@ -33,7 +33,7 @@ We will do this by training models on EEG signals recorded from hospital patient
 
 ### Stakeholders
 
-<ins>Hospitals, labs, and brain researchers</ins>: Automating EEG analysis that can alleviate the labor-intensive, time consuming, and fatigue-related error prone manual analysis by specialized personnel, enabling detection of seizures and other types of brain activity that can cause brain damage ensuring quick and accurate treatment.
+**Hospitals, labs, and brain researchers:** Automating EEG analysis that can alleviate the labor-intensive, time consuming, and fatigue-related error prone manual analysis by specialized personnel, enabling detection of seizures and other types of brain activity that can cause brain damage ensuring quick and accurate treatment.
 
 ## Data 
 
