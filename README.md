@@ -81,13 +81,11 @@ Since our models predict probability distributions, a natural choice for our KPI
 
 Since we are ultimately solving a classification problem, we considered the following natural classification models: Naive Bayes, Logistic regression, Random forest, XGBoost classifier, and CatBoost classifier. 
 
-1) **Baseline:** Our baseline model outputs the constant distribution [p0, p1, p2, p3, p4, p5], where 
-p0 = percentage of Seizure votes in the training set,
-p1 = percentage of LPD votes in the training set,
-p2 = percentage of GPD votes in the training set,
-p3 = percentage of LRDA votes in the training set,
-p4 = percentage of GRDA votes in the training set, and 
-p5 = percentage of Other votes in the training set.
+But first, a natural baseline model is to assign to each class simply the proportion of the data points in the training set with that class as the expert consensus. Namely, the baseline assigns to each data point the constant distribution [p0, p1, p2, p3, p4, p5] where p0 = percentage of Seizure votes in the training set, etc.
+
+For each of the other models, we trained them on various combinations...
+
+1) **Baseline:** 
 
 The KL-divergence is ... 
 
