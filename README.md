@@ -139,6 +139,8 @@ This model, along with its performance on the test set, is saved in scripts/mode
 
 ## Strengths and weaknesses of our model, and future research
 
+As apparent from the confusion matrix, our best model performs reasonably well for classifying Seizures, LPD, GPD, and GRDA, but performs poorly at detecting LRDA. For furture research, we hope to improve our model's performance in detecting LRDA, as well as improving the precision and recall for the other classes by extracting more sophisticated features following state-of-the-art EEG literatures. We also hope to run various deep learning models, such as CNNs, on such features. 
+
 
 
 
