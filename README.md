@@ -77,7 +77,7 @@ In **scripts/data_preprocessing/make_mel_spec_from_EEG.ipynb**:
 
 In **scripts/data_preprocessing/merge_spectrogram_features_n_train_test_split.ipynb**:
 
-6) We first filter out rows from the original dataset where preprocessing step 2 yielded NaNs. Then, in order to prevent over-representation of EEG data points with multiple time offsets close to one another, we filter out EEG offsets that are less than 10 seconds apart (since the final predictions are made on 10 seconds of EEG data). Furthermore, since the predictions for different offsets are similar (as they are ultimately based on different time windows of the same EEG signal), we retain the votes of the dropped EEG offsets, and merge them with the remaining ones.
+6) We first filter out rows from the original dataset where preprocessing step 2 yielded NaNs. Then, in order to prevent over-representation of EEG data points with multiple time offsets close to one another and since the features we consider are less sensitive to moderate changes in amplitudes and frequencies of the EEG signals that can happen in short periods of time, we filter out EEG offsets that are less than 10 seconds apart (since the final predictions are made on 10 seconds of EEG data).  Furthermore, since the predictions for different offsets are similar (as they are ultimately based on different time windows of the same EEG signal), we retain the votes of the dropped EEG offsets, and merge them with the remaining ones.
 
 This results in dropping the number of data points from 106,800 (in the original training data set) to around 32,500 data points. 
 
